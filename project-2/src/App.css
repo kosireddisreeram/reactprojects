@@ -1,0 +1,40 @@
+.container{
+  background-color:black;
+  height: 8rem;
+  padding-top: 1rem;
+  display: flex;
+  color: blueviolet;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+align-items: center;}
+.logo{
+  width: 8%;
+}
+.container>h3,.container>h1{
+  margin: 0px;
+}
+.container>h3{
+  margin-right: auto;
+}
+.nav1{
+  display: flex;
+
+}
+.body{
+  color: white;
+  
+}
+
+
+body{
+  background-color: grey;
+
+}
+
+.main--facts > li::marker{
+font-size: 1.4rem;  
+
+color:blue
+}

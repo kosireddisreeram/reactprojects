@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Roboto&display=swap');
+
+body {
+  font-family: 'Patrick Hand SC', cursive;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-items{
+  list-style-type: none;
+  display: flex;
+  
+}
+.nav-items>li{
+  padding: 1em;
+}
+.logo{
+  width: 8%;
+}
+.footer{
+  background-color: grey;
+  padding:1rem;
+}
