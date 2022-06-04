@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+
+<div id="header" ></div>
+
+<div id="formdiv">
+    <form action="">
+        <h2 style="text-align: center;">Find Meal</h2>
+        <input type="text" placeholder="Searchmeal" id="search" style="width: 400px;height: 40px;margin-left: 200px;">
+        <input type="submit" id="submit" value="search" style="width:100px;height: 40px;">
+    </form>
+</div>
+
+<h1 style="text-align: center;">List of Receipe</h1>
+<div id="data"></div>
+
+<a href=""></a>
+
+</body>
+</html>
+<script type="module">
+
+import navbar from "./component/navbar.js"
+
+console.log(navbar)
+
+let header = document.getElementById("header")
+header.innerHTML=navbar
+
+
+
+import {getData, append1} from "./script/index.js"
+
+let res = await getData(`https://www.themealdb.com/api/json/v1/1/search.php?s`)
+
+let data =document.getElementById("data")
+
+append1(res.meals, data)
+
+
+      document.querySelector("form").addEventListener("submit", async() => {
+
+                    
+        event.preventDefault();
+        let search = document.getElementById("search").value
+        console.log(search)
+        let response = await getData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+        
+       console.log(response);
+
+        let data  = document.getElementById("data")
+        append1(response.meals, data);
+         
+        })
+     
+
+</script>

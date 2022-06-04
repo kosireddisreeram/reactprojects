@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/main.css">
+
+
+</head>
+<body>
+
+<div id="header" ></div>
+<h1>Latest Receipe</h1>
+
+
+
+<div id="data"></div>
+<div id="data1"></div>
+
+<a href=""></a>
+
+</body>
+</html>
+<script type="module">
+
+import navbar from "./component/navbar.js"
+
+console.log(navbar)
+
+let header = document.getElementById("header")
+header.innerHTML=navbar
+
+
+
+import {getData, append1,append2} from "./script/index.js"
+console.log(getData, append1, append2)
+
+let response = await getData(`https://www.themealdb.com/api/json/v1/1/random.php`)
+
+let data =document.getElementById("data")
+append1(response.meals, data)
+
+let data1 =document.getElementById("data1")
+append2(response.meals, data1)
+
+
+
+
+</script>

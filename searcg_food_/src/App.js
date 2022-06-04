@@ -2,7 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import React from 'react';
 import Products from './Products';
-
+import Items from './Items';
 function App() {
   const[search,setSearch] =useState("");
   const [data,setData] = useState([]);
@@ -25,15 +25,17 @@ const formHandler=(e)=>{
   }
   return (
       <center>
-        <h1>Food Receipe</h1>
+        <h1>EDAMAM API </h1>
 
         <form onSubmit={formHandler}>
-          <input type="text" onChange={searchHandler} value={search} /> <br/> <br/>
-          <input type="submit" className='btn btn-primary' value="search"/>
+          <input type="text" onChange={searchHandler} value={search} /> &nbsp; &nbsp;
+          <input type="submit" className='button' value="search"/>
         </form>
-        
+        <br/>
         {data.length>=1 ? <Products data={data}/> :null}
+       <Items/>
       </center>
+
 
     
   );
