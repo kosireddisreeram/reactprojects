@@ -6,6 +6,7 @@ import Counter from './Counter';
 function App() {
   const[task,setTask]=useState("");
   const [todos,SetTodos]=useState([]);
+// count ++  
 
   const changehandler=(e)=>{
 setTask(e.target.value)
@@ -21,8 +22,8 @@ setTask(e.target.value)
     setTask("")
   }
   const deleteHandler = (indexValue)=>{
-   const newTodos= todos.filter((todo,index)=>index!==indexValue) 
-  SetTodos(newTodos)
+   const newTodos= todos.filter((todo,index)=>index!==indexValue);
+  SetTodos(newTodos);
   }
   return (
     <div className="App">
