@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 260px;
+        }
+        #movies{
+        height:260px;
+        border: 1px solid black;
+        width: 265px;
+        overflow: scroll;
+        
+
+    }
+    </style>
+    
+</head>
+<body>
+    <input oninput="debounce(main,1000)" type="text" id="query">
+    <div id="movies"></div>
+
+    <div id="display"></div>
+</body>
+</html>
+<script>
+    let timerid
+    var movies=document.getElementById("movies");
+    var display=document.getElementById("display");
+//  let res=await fetch(`https://www.omdbapi.com/?apikey=79e5e62&s=${input}`);
+async function searchmovie(){
+    try{
+        let input=document.getElementById('query').value;
+let res=await fetch(`https://www.omdbapi.com/?apikey=79e5e62&s=${input}`);
+let data=await res.json();
+console.log(data);
+return data.Search;
+    }
+catch(error){
+    console.log(error);
+}
+}
+
+function displaydata(data){
+    
+    data.map(function(elem){
+       
+        var p=document.createElement('p');
+p.innerText=elem.Title;
+p.addEventListener("click",function(){
+    var div=document.createElement('div');
+    // var p =document.createElement('p');
+    // p.innerText=;
+    // var poster=document.createElement('img');
+    // poster.setAttribute('src',)
+    // var release=document.createElement("p");
+    // release.innerText=elem.;
+    var title=document.createElement('p');
+    title.innerText=elem.Title;
+ display.append(title)
+})
+movies.append(p)
+    })
+
+}
+async function main(){
+    try {
+        
+
+        let data= await searchmovie();
+        if(data==undefined){
+            return false;
+        }
+        displaydata(data);
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+function debounce(func,delay){
+if(timerid){
+    clearTimeout(timerid)
+}
+timerid=setTimeout(function(){
+func()
+},delay)
+}
+</script>

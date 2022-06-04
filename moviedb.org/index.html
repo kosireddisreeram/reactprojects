@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap:20px;
+        }
+        #image{
+            width: 200px;
+            height:290px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Popular movies</h1>
+    <div id="container"></div>
+
+
+</body>
+</html>
+<script>
+// let url=`https://api.themoviedb.org/3/movie/popular?api_key=127b554c8283832bff726ac0ca7d8554&language=en-US&page=1`;
+// api key - 127b554c8283832bff726ac0ca7d8554
+// let imageurl=`https://image.tmdb.org/t/p/original${poster_path}`
+// async function getData(){
+//     try{
+//     let res= await fetch(url);
+//     let data= await res.json();
+//     console.log(data);
+//     let poster= data.results;
+//     console.log(poster);
+//     displaydata(poster);
+// }
+// catch(err){
+//     console.log(err);
+// }
+// }
+
+// getData(); 
+
+const getData = async()=>{
+try{
+
+
+    let res =await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=127b554c8283832bff726ac0ca7d8554&language=en-US&page=1`
+        );
+        // we need to pass maxResults to know how many results we need to get 50 is the max limit on the limits
+let data =await res.json();
+console.log(data)
+let poster=data.results;
+console.log(poster);
+displaydata(poster)
+
+// return videos;
+}
+catch(error){
+console.log(error)
+}
+
+};
+getData();
+// function displaydata(poster){
+//     poster.map(function(elem,poster_path){
+//         var div =document.createElement('div');
+//     let p = document.createElement('p');
+//     p.innerText=elem.original_title;
+//     var path =document.createElement('p');
+//     path.innerText=elem.poster_path;
+//     let image = document.createElement("img");
+//     image.setAttribute("src",`https://image.tmdb.org/t/p/original${poster_path}`)
+//     console.log(image);
+//     div.append(p,image);
+//     document.querySelector("#container").append(div);
+//     })
+  
+// }
+const displaydata= (poster) => {
+    document.querySelector("#container").innerHTML=null;
+    poster.map(({original_title,poster_path})=>{
+        var div =document.createElement('div');
+    let p = document.createElement('p');
+    p.innerText=original_title;
+    let image = document.createElement("img");
+   image.src=`https://image.tmdb.org/t/p/original${poster_path}`
+   image.setAttribute("id","image");
+   
+    div.append(p,image);
+    document.querySelector("#container").append(div);
+
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
